@@ -102,7 +102,7 @@ export async function getClusterIds() {
 
 export async function getClusterMetadata(): Promise<ClusterMetadata[]> {
   try {
-    const results = await search({ size: 1000 }, 'opni-cluster-metadata');
+    const results = await search({ size: 1000 }, 'monty-cluster-metadata');
 
     const clusters = (results.rawResponse?.hits?.hits || []);
 

@@ -12,8 +12,8 @@
 // Keeping index prefix as 'opendistro' as migrating the system index is currently difficult to complete
 export const OPEN_SEARCH_PREFIX = 'opendistro';
 
-export const PLUGIN_NAME = `opni`;
-export const INDEX_PREFIX = `${OPEN_SEARCH_PREFIX}-opni`;
+export const PLUGIN_NAME = `monty`;
+export const INDEX_PREFIX = `${OPEN_SEARCH_PREFIX}-monty`;
 export const INDEX = {
   SCHEDULED_JOBS: `.${INDEX_PREFIX}-config`,
   ALERTS: `.${INDEX_PREFIX}-alerts`,
@@ -23,7 +23,7 @@ export const INDEX = {
 
 export const URL = {
   MUSTACHE: 'https://mustache.github.io/mustache.5.html',
-  DOCUMENTATION: 'https://opni.io',
+  DOCUMENTATION: 'https://monty.io',
   CREATE_MONITOR_DOCUMENTATION:
     'https://opensearch.org/docs/monitoring-plugins/alerting/monitors/#create-monitors',
 };

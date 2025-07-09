@@ -1,11 +1,11 @@
 {
-  "name": "opni-dashboards",
+  "name": "monty-dashboards",
   "version": "{VERSION}",
-  "description": "Opni Dashboards Plugin",
+  "description": "Monty Dashboards Plugin",
   "main": "index.js",
   "license": "Apache-2.0",
   "config": {
-    "id": "opniDashboardsPlugin"
+    "id": "montyDashboardsPlugin"
   },
   "scripts": {
     "osd": "node ../../scripts/osd",

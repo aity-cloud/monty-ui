@@ -8,7 +8,7 @@ import { CoreContext } from './utils/CoreContext';
 
 export function renderApp(coreStart, params) {
   const isDarkMode = coreStart.uiSettings.get('theme:darkMode') || false;
-  coreStart.chrome.setBreadcrumbs([{ text: 'Opni' }]);
+  coreStart.chrome.setBreadcrumbs([{ text: 'Monty' }]);
 
   if (isDarkMode) {
     require('@elastic/charts/dist/theme_only_dark.css');
@@ -21,7 +21,7 @@ export function renderApp(coreStart, params) {
       <CoreContext.Provider
         value={{ http: coreStart.http, isDarkMode, notifications: coreStart.notifications }}
       >
-        <Route render={(props) => <Main title="Opni insights" {...props} />} />
+        <Route render={(props) => <Main title="Monty insights" {...props} />} />
       </CoreContext.Provider>
     </Router>,
     params.element

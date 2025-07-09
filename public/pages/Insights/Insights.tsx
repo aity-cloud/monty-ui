@@ -21,7 +21,7 @@ interface MainState {
   keywords: string[];
 };
 
-const COOKIE_KEY = 'opni-keywords';
+const COOKIE_KEY = 'monty-keywords';
 
 class Main extends Component<any, MainState> {
   constructor(props) {

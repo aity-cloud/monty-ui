@@ -1,5 +1,5 @@
-import { OpniPlugin } from './plugin';
+import { MontyPlugin } from './plugin';
 
 export function plugin(initializerContext) {
-  return new OpniPlugin(initializerContext);
+  return new MontyPlugin(initializerContext);
 }

@@ -1,8 +1,8 @@
 {
-  "id": "opniDashboardsPlugin",
+  "id": "montyDashboardsPlugin",
   "version": "{VERSION}",
   "opensearchDashboardsVersion": "2.8.0",
-  "configPath": ["opni_dashboards"],
+  "configPath": ["monty_dashboards"],
   "requiredPlugins": [],
   "server": false,
   "ui": true

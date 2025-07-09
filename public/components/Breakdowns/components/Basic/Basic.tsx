@@ -8,7 +8,7 @@ import { BasicBreakdown } from '../../../../utils/requests';
 import { Range } from '../../../../utils/time';
 import { createBasicColumns } from '../utils';
 
-export const NO_ITEMS_WORKLOAD_INSIGHTS_CONFIGURED="No items found. Make sure you have Opni's Deployments configured in order to see information here."
+export const NO_ITEMS_WORKLOAD_INSIGHTS_CONFIGURED="No items found. Make sure you have Monty's Deployments configured in order to see information here."
 
 
 function getRowProps(item: Group) {

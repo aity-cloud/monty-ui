@@ -1,11 +1,11 @@
 import { PLUGIN_NAME } from '../utils/constants';
 
-export class OpniPlugin {
+export class MontyPlugin {
   setup(core) {
     core.application.register({
       id: PLUGIN_NAME,
-      title: 'Opni',
-      description: 'Opni Plugin',
+      title: 'Monty',
+      description: 'Monty Plugin',
       category: {
         id: 'opensearch',
         label: 'OpenSearch Plugins',

@@ -17,13 +17,13 @@ steps:
     commands:
       - cd ..
       - git clone -b 2.4 --single-branch https://github.com/opensearch-project/OpenSearch-Dashboards.git OpenSearch-Dashboards
-      - mkdir -p OpenSearch-Dashboards/plugins/opni-dashboards-plugin
-      - mv src/* OpenSearch-Dashboards/plugins/opni-dashboards-plugin
+      - mkdir -p OpenSearch-Dashboards/plugins/monty-dashboards-plugin
+      - mv src/* OpenSearch-Dashboards/plugins/monty-dashboards-plugin
       - mv OpenSearch-Dashboards src/OpenSearch-Dashboards
   - name: plugin-replace-versions
     image: node:14.20.0
     commands:
-    - cd OpenSearch-Dashboards/plugins/opni-dashboards-plugin
+    - cd OpenSearch-Dashboards/plugins/monty-dashboards-plugin
     - sed -i "s/{VERSION}/${DRONE_TAG/plugin-/}/g" package.json opensearch_dashboards.json
   - name: plugin-build
     image: node:14.20.0
@@ -36,10 +36,10 @@ steps:
     - chmod -R 777 OpenSearch-Dashboards
     - cd OpenSearch-Dashboards
     - su -c "yarn osd bootstrap" osd
-    - cd plugins/opni-dashboards-plugin
+    - cd plugins/monty-dashboards-plugin
     - su -c "yarn install" osd
     - su -c "yarn build" osd
-    - su -c "mv build/*.zip build/opni-dashboards-plugin-${DRONE_TAG/plugin-/}.zip" osd
+    - su -c "mv build/*.zip build/monty-dashboards-plugin-${DRONE_TAG/plugin-/}.zip" osd
   - name: plugin-upload-zip
     image: plugins/github-release
     pull: always
@@ -48,5 +48,5 @@ steps:
      api_key:
        from_secret: github_token
      files:
-       - "OpenSearch-Dashboards/plugins/opni-dashboards-plugin/build/*.zip"
+       - "OpenSearch-Dashboards/plugins/monty-dashboards-plugin/build/*.zip"
 
