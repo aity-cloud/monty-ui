@@ -1,6 +1,6 @@
 {
-  "name": "opni",
-  "description": "Opni admin panel which aids in the management of relevant resources",
+  "name": "monty",
+  "description": "Monty admin panel which aids in the management of relevant resources",
   "version": "0.1.0",
   "private": false,
   "rancher": true,
@@ -15,5 +15,5 @@
   "files": [
     "**/*"
   ],
-  "main": "opni-0.1.0.umd.min.js"
+  "main": "monty-0.1.0.umd.min.js"
 }

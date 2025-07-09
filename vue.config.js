@@ -2,14 +2,14 @@ const config = require('@rancher/shell/vue.config');
 const webpack = require('webpack');
 
 const isStandalone = process.env.IS_STANDALONE === 'true';
-let opniApi = process.env.OPNI_API || 'http://localhost:8888';
+let montyApi = process.env.MONTY_API || 'http://localhost:8888';
 
-if (opniApi && !opniApi.startsWith('http')) {
-  opniApi = `http://${ opniApi }`;
+if (montyApi && !montyApi.startsWith('http')) {
+  montyApi = `http://${ montyApi }`;
 }
 
-if (opniApi) {
-  console.log(`OPNI API: ${ opniApi }`); // eslint-disable-line no-console
+if (montyApi) {
+  console.log(`MONTY API: ${ montyApi }`); // eslint-disable-line no-console
 }
 
 console.log(`IS STANDALONE`, isStandalone); // eslint-disable-line no-console
@@ -22,10 +22,10 @@ const baseConfig = config(__dirname, {
 const baseConfigureWebpack = baseConfig.configureWebpack;
 
 baseConfig.devServer.proxy = {
-  '/opni-api': {
+  '/monty-api': {
     secure:      false,
-    target:      opniApi,
-    pathRewrite: { '^/opni-api': '' }
+    target:      montyApi,
+    pathRewrite: { '^/monty-api': '' }
   },
 };
 
@@ -40,9 +40,9 @@ if (!isStandalone) {
   baseConfig.publicPath = './';
 }
 
-// We need to add a custom script to the index in order to change how assets for the opni backendso we have to override the index.html
+// We need to add a custom script to the index in order to change how assets for the monty backendso we have to override the index.html
 if (isStandalone) {
-  baseConfig.pages.index.template = './pkg/opni/index.html';
+  baseConfig.pages.index.template = './pkg/monty/index.html';
 }
 
 module.exports = baseConfig;
