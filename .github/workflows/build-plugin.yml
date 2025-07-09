@@ -1,0 +1,54 @@
+name: Plugin and Docker Build on Tag
+
+on:
+  push:
+    tags:
+      - '*'
+    branches:
+      - plugin
+
+jobs:
+  plugin-build:
+    name: Plugin Build
+    runs-on: ubuntu-latest
+    if: github.ref_type == 'tag'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          path: src
+
+      - name: Plugin clone and setup
+        run: |
+          ls
+          git clone -b 2.4 --single-branch https://github.com/opensearch-project/OpenSearch-Dashboards.git OpenSearch-Dashboards
+          mkdir -p OpenSearch-Dashboards/plugins/monty-dashboards-plugin
+          mv src/* OpenSearch-Dashboards/plugins/monty-dashboards-plugin
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14.20.0'
+
+      - name: Build plugin
+        run: |
+          cd OpenSearch-Dashboards
+          yarn osd bootstrap
+          
+          cd plugins/monty-dashboards-plugin
+          sed -i "s/{VERSION}/${GITHUB_BRANCH/plugin-/}/g" package.json opensearch_dashboards.json
+          
+          yarn install
+          yarn build
+          ls build
+          mv build/*.zip build/monty-dashboards-plugin-${GITHUB_BRANCH/plugin-/}.zip
+          ls build
+        env:
+          GITHUB_BRANCH: ${{ github.head_ref || github.ref_name }}
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "OpenSearch-Dashboards/plugins/monty-dashboards-plugin/build/*.zip"
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
